@@ -11,7 +11,10 @@ import {
   GraduationCap,
   ChevronRight,
   Plus,
-  FileText
+  FileText,
+  HelpCircle,
+  ClipboardList,
+  UserCog
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -47,15 +50,15 @@ export function AppSidebar({ userRole, userName, userEmail }: AppSidebarProps) {
   const getMenuItems = () => {
     const commonItems = [
       { title: "Dashboard", url: "/dashboard", icon: Home },
-      { title: "Profile", url: "/profile", icon: User },
+      { title: "Attendance Records", url: "/attendance-records", icon: ClipboardList },
     ];
 
     const roleSpecificItems = {
       faculty: [
-        { title: "My Classes", url: "/classes", icon: BookOpen },
         { title: "Mark Attendance", url: "/attendance", icon: UserCheck },
-        { title: "Analytics", url: "/analytics", icon: BarChart3 },
-        { title: "Timetable", url: "/timetable", icon: Calendar },
+        { title: "Student Management", url: "/students", icon: Users },
+        { title: "Course Management", url: "/courses", icon: BookOpen },
+        { title: "Reports", url: "/reports", icon: FileText },
       ],
       student: [
         { title: "My Attendance", url: "/my-attendance", icon: BarChart3 },
@@ -63,22 +66,22 @@ export function AppSidebar({ userRole, userName, userEmail }: AppSidebarProps) {
         { title: "Subjects", url: "/subjects", icon: BookOpen },
       ],
       class_incharge: [
-        { title: "Class Overview", url: "/class-overview", icon: GraduationCap },
-        { title: "Attendance Reports", url: "/reports", icon: FileText },
+        { title: "Mark Attendance", url: "/attendance", icon: UserCheck },
         { title: "Student Management", url: "/students", icon: Users },
-        { title: "Analytics", url: "/analytics", icon: BarChart3 },
+        { title: "Course Management", url: "/courses", icon: BookOpen },
+        { title: "Reports", url: "/reports", icon: FileText },
       ],
       hod: [
-        { title: "Department Overview", url: "/dept-overview", icon: Building2 },
-        { title: "Faculty Management", url: "/faculty", icon: Users },
+        { title: "Faculty Management", url: "/faculty", icon: UserCog },
+        { title: "Student Management", url: "/students", icon: Users },
+        { title: "Course Management", url: "/courses", icon: BookOpen },
         { title: "Reports", url: "/reports", icon: FileText },
-        { title: "Analytics", url: "/analytics", icon: BarChart3 },
       ],
       principal: [
-        { title: "Institution Overview", url: "/institution", icon: Building2 },
-        { title: "Departments", url: "/departments", icon: Building2 },
+        { title: "Faculty Management", url: "/faculty", icon: UserCog },
+        { title: "Student Management", url: "/students", icon: Users },
+        { title: "Course Management", url: "/courses", icon: BookOpen },
         { title: "Reports", url: "/reports", icon: FileText },
-        { title: "Analytics", url: "/analytics", icon: BarChart3 },
       ],
     };
 
@@ -163,7 +166,7 @@ export function AppSidebar({ userRole, userName, userEmail }: AppSidebarProps) {
         ))}
 
         <SidebarGroup>
-          <SidebarGroupLabel>Settings</SidebarGroupLabel>
+          <SidebarGroupLabel>System</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
@@ -171,6 +174,14 @@ export function AppSidebar({ userRole, userName, userEmail }: AppSidebarProps) {
                   <a href="/settings" data-testid="link-settings">
                     <Settings className="h-4 w-4" />
                     <span>Settings</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <a href="/help" data-testid="link-help">
+                    <HelpCircle className="h-4 w-4" />
+                    <span>Help & Support</span>
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>

@@ -10,6 +10,12 @@ import { LoginForm } from "@/components/LoginForm";
 import { Dashboard } from "@/components/Dashboard";
 import { AttendanceMarking } from "@/components/AttendanceMarking";
 import { StudentManagement } from "@/components/StudentManagement";
+import { AttendanceRecords } from "@/components/AttendanceRecords";
+import { FacultyManagement } from "@/components/FacultyManagement";
+import { CourseManagement } from "@/components/CourseManagement";
+import { Reports } from "@/components/Reports";
+import { Settings } from "@/components/Settings";
+import { HelpSupport } from "@/components/HelpSupport";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import NotFound from "@/pages/not-found";
 
@@ -39,7 +45,13 @@ function Router({ user }: { user: User | null }) {
       <Route path="/" component={() => <Dashboard userRole={user.role} />} />
       <Route path="/dashboard" component={() => <Dashboard userRole={user.role} />} />
       <Route path="/attendance" component={() => <AttendanceMarking classInfo={classInfo} />} />
+      <Route path="/attendance-records" component={() => <AttendanceRecords />} />
       <Route path="/students" component={() => <StudentManagement userRole={user.role} />} />
+      <Route path="/faculty" component={() => <FacultyManagement />} />
+      <Route path="/courses" component={() => <CourseManagement />} />
+      <Route path="/reports" component={() => <Reports />} />
+      <Route path="/settings" component={() => <Settings />} />
+      <Route path="/help" component={() => <HelpSupport />} />
       <Route path="/manage/students" component={() => <StudentManagement userRole={user.role} />} />
       <Route component={NotFound} />
     </Switch>
